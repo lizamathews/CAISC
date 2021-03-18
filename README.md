@@ -5,8 +5,8 @@ CAISC, which stands for Clonal Architecture with Integrating SNV and CNV, is a s
 If you have any questions about using CAISC, you can open a new issue here, or you can email one of the maintainers listed below. 
 ## Installation
 ## Pipeline
-We present Clonal Architecture with Integration of SNV and CNV (CAISC), a new subclone detection algorithm that integrates both SNV and CNV data in order to acquire more accurate and robust clustering results. Here is an overview of the CAISC pipeline, which will go into more details in the next slides. We derive two cell-cell distance matrices using either SNV and CNV data, from DENDRO and infercnv respectively. These matrices are integrated using an entropy weighted method, and into a final distance matrix that is used to cluster the cells into subclones.
-## Overview
+We present Clonal Architecture with Integration of SNV and CNV (CAISC), a new subclone detection algorithm that integrates both SNV and CNV data in order to acquire more accurate and robust clustering results. Here is an overview of the CAISC pipeline. We derive two cell-cell distance matrices using either SNV and CNV data, from DENDRO and infercnv respectively. These matrices are integrated using an entropy weighted method, and into a final distance matrix that is used to cluster the cells into subclones.
+### Overview
 <p align="center">
   <img src='https://raw.githubusercontent.com/lizamathews/CAISC/master/figure1.jpg'>
 </p>
