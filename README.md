@@ -1,4 +1,4 @@
-# CAISC
+# CAISC (repository will be fully updated by April 1, 2021)
 CAISC, which stands for Clonal Architecture with Integrating SNV and CNV, is a software that integrates copy number variation and single nucleotide mutations for genetic heterogeneity profiling and subclone detection by single-cell RNA sequencing 
 ## Manuscript
 ## Questions?
@@ -6,7 +6,7 @@ If you have any questions about using CAISC, you can open a new issue here, or y
 ## Installation
 ## Pipeline
 <p align="center">
-  <img src='https://raw.githubusercontent.com/lizamathews/CAISC/master/figures/figure1_pipeline.jpg' width='1000' height='600'>
+  <img src='https://raw.githubusercontent.com/lizamathews/CAISC/master/figures/figure1_pipeline.jpg'>
   </p>
 We present Clonal Architecture with Integration of SNV and CNV (CAISC), a new subclone detection algorithm that integrates both SNV and CNV data in order to acquire more accurate and robust clustering results. Here is an overview of the CAISC pipeline, which will go into more details in the next slides. We derive two cell-cell distance matrices using either SNV and CNV data, from DENDRO and infercnv respectively. These matrices are integrated using an entropy weighted method, and into a final distance matrix that is used to cluster the cells into subclones.
 ### Overview
