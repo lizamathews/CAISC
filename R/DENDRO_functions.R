@@ -1,13 +1,6 @@
 # These functions are from the DENDRO project. We appreciate that they have made their code available for public use.
 # (https://github.com/zhouzilu/DENDRO)
 
-
-#library(phangorn)
-#library(svMisc)
-
-#library(mclust)
-#library(ggplot2)
-
 # Calculate and return distance matrix using X, N, Z, epi, and Pg
 DENDRO.dist = function(X,N,Z,epi=0.01,show.progress=TRUE){
   cat("I am here\n")
