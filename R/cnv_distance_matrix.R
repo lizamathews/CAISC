@@ -1,10 +1,3 @@
-
-
-#library(BiocManager)
-#BiocManager::install("infercnv")
-#library(infercnv)
-
-
 #' Create InferCNV Object
 #'
 #' This function creates an inferCNV object.
