@@ -1,3 +1,4 @@
+library(dplyr)
 #' Create SNV Distance Matrix input from VCF File
 #'
 #' This function finds chromosome information, alternative allele read counts (X),
@@ -10,10 +11,10 @@ vcf_to_SNVinput <- function(filevcf){
   # Read in your vcf file
   dlist=data.table::fread(filevcf,header=TRUE,skip='#CHROM')
   # Extract only autosome SNPs
-  dlist <- dlist dplyr::%>% dplyr::filter(`#CHROM`dplyr::%in% paste0("chr", 1:22))
-  Format <- dlist dplyr::%>% dplyr::select(FORMAT)
-  Info <- dlist dplyr::%>% dplyr::select(`#CHROM`,POS,REF,ALT)
-  dlist <- dlist dplyr::%>% dplyr::select(-`#CHROM`,-POS,-ID,-REF,-ALT,-QUAL,-FILTER,-INFO,-FORMAT)
+  dlist <- dlist %>% filter(`#CHROM`%in% paste0("chr", 1:22))
+  Format <- dlist %>% select(FORMAT)
+  Info <- dlist %>% select(`#CHROM`,POS,REF,ALT)
+  dlist <- dlist %>% select(-`#CHROM`,-POS,-ID,-REF,-ALT,-QUAL,-FILTER,-INFO,-FORMAT)
 
   # By checking the head of the format, we decided the position of GT (genotype info), AD (allele read depth), and DP (total read depth) separated by ":"
   # As shown by the example below, GT position is 1, AD position is 2 and DP position is 3.
