@@ -1,7 +1,7 @@
 # CAISC
 CAISC, which stands for Clonal Architecture with Integrating SNV and CNV, is a software that integrates copy number variation and single nucleotide mutations for genetic heterogeneity profiling and subclone detection by single-cell RNA sequencing 
 ## Questions?
-If you have any questions about using CAISC, you can open a new issue ([here](https://github.com/lizamathews/CAISC/issues/new)), or you can email one of the maintainers listed below. 
+If you have any questions about using CAISC, you can open a new issue [here](https://github.com/lizamathews/CAISC/issues/new), or you can email one of the maintainers listed below. 
 ## Installation
 Install to R/RStudio and install all packages in the latest version of R.
 ```R
