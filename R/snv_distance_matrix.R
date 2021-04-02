@@ -1,4 +1,5 @@
 library(dplyr)
+library(magrittr)
 #' Create SNV Distance Matrix input from VCF File
 #'
 #' This function finds chromosome information, alternative allele read counts (X),
