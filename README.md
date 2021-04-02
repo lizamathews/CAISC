@@ -18,7 +18,7 @@ We present Clonal Architecture with Integration of SNV and CNV (CAISC), a new su
 
 ## Vignette
 ## Citation
-CAISC: A Software to Integrate Copy Number Variation and Single Nucleotide Mutations for Genetic Heterogeneity Profiling and Subclone Detection by Single-cell RNA Sequencing ([GitHub](https://github.com/lizamathews/CAISC))
+CAISC: A Software to Integrate Copy Number Variation and Single Nucleotide Mutations for Genetic Heterogeneity Profiling and Subclone Detection by Single-cell RNA Sequencing (GitHub: https://github.com/lizamathews/CAISC)
 ## Developers and Maintainers
 * Shouguo Gao (shouguo.gao@nih.gov)
 * Jeerthi Kannan (jeerthi98@gmail.com)
