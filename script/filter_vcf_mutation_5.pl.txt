@@ -1,0 +1,108 @@
+open(INFILE, "GSE75688_merged.vcf")||die"";
+open(OUTFILE, ">GSE75688_merged_5mutations.vcf")||die"";
+for($i=0; $i<126;$i++){
+	$line=<INFILE>;
+	print OUTFILE $line;
+}
+while($line=<INFILE>){
+	chop($line);
+	@items=split("\t", $line);
+	$mut=0;
+	for($i=9; $i<@items;$i++){
+		if(@items[$i] ne "./."){
+			$mut++;
+		}
+	}
+	if($mut>=5){
+		print OUTFILE $line . "\n";
+	}
+}
+close(OUTFILE);
+close(INFILE);
+
+open(INFILE, "GSE75688_merged.vcf")||die"";
+open(OUTFILE, ">GSE75688_merged_10mutations.vcf")||die"";
+for($i=0; $i<126;$i++){
+	$line=<INFILE>;
+	print OUTFILE $line;
+}
+while($line=<INFILE>){
+	chop($line);
+	@items=split("\t", $line);
+	$mut=0;
+	for($i=9; $i<@items;$i++){
+		if(@items[$i] ne "./."){
+			$mut++;
+		}
+	}
+	if($mut>=10){
+		print OUTFILE $line . "\n";
+	}
+}
+close(OUTFILE);
+close(INFILE);
+
+open(INFILE, "GSE75688_merged.vcf")||die"";
+open(OUTFILE, ">GSE75688_merged_20mutations.vcf")||die"";
+for($i=0; $i<126;$i++){
+	$line=<INFILE>;
+	print OUTFILE $line;
+}
+while($line=<INFILE>){
+	chop($line);
+	@items=split("\t", $line);
+	$mut=0;
+	for($i=9; $i<@items;$i++){
+		if(@items[$i] ne "./."){
+			$mut++;
+		}
+	}
+	if($mut>=20){
+		print OUTFILE $line . "\n";
+	}
+}
+close(OUTFILE);
+close(INFILE);
+
+open(INFILE, "GSE75688_merged.vcf")||die"";
+open(OUTFILE, ">GSE75688_merged_30mutations.vcf")||die"";
+for($i=0; $i<126;$i++){
+	$line=<INFILE>;
+	print OUTFILE $line;
+}
+while($line=<INFILE>){
+	chop($line);
+	@items=split("\t", $line);
+	$mut=0;
+	for($i=9; $i<@items;$i++){
+		if(@items[$i] ne "./."){
+			$mut++;
+		}
+	}
+	if($mut>=30){
+		print OUTFILE $line . "\n";
+	}
+}
+close(OUTFILE);
+close(INFILE);
+open(INFILE, "GSE75688_merged.vcf")||die"";
+open(OUTFILE, ">GSE75688_merged_40mutations.vcf")||die"";
+for($i=0; $i<126;$i++){
+	$line=<INFILE>;
+	print OUTFILE $line;
+}
+while($line=<INFILE>){
+	chop($line);
+	@items=split("\t", $line);
+	$mut=0;
+	for($i=9; $i<@items;$i++){
+		if(@items[$i] ne "./."){
+			$mut++;
+		}
+	}
+	if($mut>=40){
+		print OUTFILE $line . "\n";
+	}
+}
+close(OUTFILE);
+close(INFILE);
