@@ -1,13 +1,13 @@
 Package: CAISC
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Clonal Architecture with Integration of SNV and CNV
+Version: 1.0.0
 Authors@R: 
     person(given = "First",
            family = "Last",
            role = c("aut", "cre"),
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: This package implements a new subclone detection algorithm that integrates SNV and CNV data in order to obtain more robsust clustering results.
 Depends: R (>= 4.1.0)
 biocViews: 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
