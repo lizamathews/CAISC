@@ -19,7 +19,7 @@ We present Clonal Architecture with Integration of SNV and CNV (CAISC), a new su
 ## Vignette
  The **CAISC R notebook** with step-by-step sample code is available [***here***](http://raw.githack.com/lizamathews/CAISC/master/vignette/vignette.html). 
  
- The corresponding **Rmd script** is available [***here***](https://github.com/lizamathews/CAISC/master/vignette/vignette.Rmd).
+ The corresponding **Rmd script** is available [***here***](https://github.com/lizamathews/CAISC/blob/master/vignette/vignette.Rmd).
 
 ## Citation
 CAISC: A Software to Integrate Copy Number Variation and Single Nucleotide Mutations for Genetic Heterogeneity Profiling and Subclone Detection by Single-cell RNA Sequencing (GitHub: https://github.com/lizamathews/CAISC)
