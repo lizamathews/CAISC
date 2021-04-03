@@ -50,7 +50,7 @@ If you have any questions or problems, please feel free to open a new issue [her
 ## 3.1 Overall pipeline 
 
 ```{r, out.width = "1000px", fig.align = "center", echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/lizamathews/CAISC/master/figure1.jpg")
+knitr::include_graphics("https://raw.githubusercontent.com/lizamathews/CAISC/master/figures/figure1.jpg")
 ```
   **Figure 1**. A flowchart outlining the procedures for CAISC.
 
