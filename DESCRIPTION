@@ -23,9 +23,10 @@ Imports:
     TailRank,
     phyclust,
     colorspace,
-    infercnv (>= 1.6.0),
+    infercnv (== 1.6.0),
     InteractiveComplexHeatmap,
     leiden,
+    leidenAlg,
     gtools,
     igraph
 Remotes: 
