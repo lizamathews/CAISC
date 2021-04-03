@@ -34,6 +34,9 @@ Imports:
     phyclust,
     colorspace,
     infercnv (>= 1.6.0),
-    InteractiveComplexHeatmap
+    InteractiveComplexHeatmap,
+    leiden,
+    gtools,
+    igraph
 Remotes: 
     broadinstitute/inferCNV
