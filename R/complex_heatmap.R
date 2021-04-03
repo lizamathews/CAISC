@@ -55,7 +55,7 @@ createComplexHeatmap <- function(snvDistMatrix, cnvDistMatrix, integratedDistMat
 
   # load gene order data
   geneLocation<-read.table(geneOrder, row.names = 1)
-  geneLocation<-geneLocation[mixedorder(geneLocation$V2),]
+  geneLocation<-geneLocation[gtools::mixedorder(geneLocation$V2),]
   exp.data<-na.omit(exp.data[row.names(geneLocation), ])
   chroms<-geneLocation[rownames(exp.data),"V2"]
   ColSideColor<-rep("black", dim(exp.data)[1])
