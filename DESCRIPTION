@@ -10,10 +10,13 @@ Authors@R:
     person(given = "Jeerthi",
            family = "Kannan",
            role = c("aut", "cre"),
+           email = "jeerthi98@gmail.com",
            comment = c(ORCID = "")),
     person(given = "Shouguo",
            family = "Gao",
-           role = c("aut", "cre")))
+           role = c("aut", "cre"),
+           email = "shouguog@gmail.com",
+           comment = c(ORCID = "")))
 Description: This package implements a new subclone detection algorithm that integrates SNV and CNV data in order to obtain more robsust clustering results.
 Depends: R (>= 4.1.0)
 biocViews: 
