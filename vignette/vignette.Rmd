@@ -23,12 +23,22 @@ knitr::opts_chunk$set(
 ```
 
 # 1. Installation
-Install all packages in the latest version of [R](https://www.r-project.org/).
+Install all packages in the latest version of [R](https://www.r-project.org/). The package works for R >=4.1.
 ```{r, eval=FALSE}
 devtools::install_github("lizamathews/CAISC")
 ```
-```{r load}
+```{r load, echo=FALSE, include=FALSE}
+# load all necessary package libraries
 library(CAISC)
+
+library(igraph)
+library(leiden)
+library(leidenAlg)
+library(InteractiveComplexHeatmap)
+library(tidyverse)  # data manipulation
+library(cluster)    # clustering algorithms
+library(factoextra) # clustering visualization
+library(dendextend) # for comparing two dendrograms
 ```
 
 # 2. Questions & issues
@@ -54,28 +64,34 @@ knitr::include_graphics("https://raw.githubusercontent.com/lizamathews/CAISC/mas
 ```
   **Figure 1**. A flowchart outlining the procedures for CAISC.
 
+```{r, echo=FALSE}
+# find paths of raw data files
+vcfPath<-system.file("extdata", "GSE57872_merged.vcf", package = "CAISC")
+sampleidPath<-system.file("extdata", "SRR_ID.txt", package = "CAISC")
+expmatPath<-system.file("extdata", "expressionmatrix_28_29.txt", package = "CAISC")
+cellPath<-system.file("extdata", "annotationCell_28_29.txt", package = "CAISC")
+genePath<-system.file("extdata", "annotationGene_28_29.txt", package = "CAISC")
+```
+
 ## 3.2 Generate SNV Mutation Distance Matrix
 
 Create a matrix of SNV mutations from a VCF file of mutations that appear in a minimal number of cells.
 ```{r SNV matrix, eval=FALSE}
 # create SNV matrix of mutations
-createSNVMatrix("GSE57872_merged.vcf", "DENDRO_input_10mutations.rda", "SRR_ID.txt", "snvDistanceMatrix.csv")
+createSNVMatrix(vcfPath, "DENDRO_input_10mutations.rda", sampleidPath, "snvDistanceMatrix.csv")
 ```
 
 ## 3.3 Generate CNV Mutation Distance Matrix
 
-Then, create a matrix of CNV mutations from a raw counts matrix containing assigned read counts, a sample annotation file, and a gene ordering file. Run only on HPC cluster or computer with at least 8 cpus per task, 10gb of RAM, and 10g of local scratch space
+Then, create a matrix of CNV mutations from a raw counts matrix containing assigned read counts, a sample annotation file, and a gene ordering file. Run only on a HPC cluster or a computer with at least 8 CPUs per task, 10GB of RAM, and 10GB of local scratch space
 ```{r CNV matrix, eval=FALSE}
-library(igraph)
-library(leiden)
-library(leidenAlg)
 # create CNV matrix of mutations
-createCNVMatrix("expressionmatrix_28_29.txt", "annotationCell_28_29.txt", "annotationGene_28_29.txt", "CSC", "GSE57872.RData")
+createCNVMatrix(expmatPath, cellPath, genePath, "CSC", "GSE57872.RData")
 ```
 
 ## 3.4 Generate Integrated Distance Matrix from SNV and CNV Mutations
 
-Next, create an integrated matrix with the created snv and cnv matrices as input.
+Next, create an integrated matrix with the created SNV and CNV matrices as input.
 ```{r integrated matrix}
 #load snv and cnv matrices
 snv_matrix <- as.matrix(read.csv("snvDistanceMatrix.csv", row.names = 1, header = TRUE))
@@ -88,43 +104,43 @@ write.csv(integrated_matrix, file="integratedMatrix.csv", quote = FALSE)
 
 ## 3.5 Create and Examine Interactive Complex Heatmap
 
-Create an interactive complex heatmap from the snv, cnv, integrated matrices, infercnv object, and the same gene ordering file used to create the cnv matrix. Use Shiny web app to interactively examine the complex heatmap.
-```{r interactive complex heatmap, eval=FALSE}
+Create an interactive complex heatmap from the SNV, CNV, integrated matrices, infercnv object, and the same gene ordering file used to create the CNV matrix. 
+```{r interactive complex heatmap}
 # create interactive complex heatmap
-heatmap <- createComplexHeatmap(snv_matrix, cnv_matrix, integrated_matrix, "GSE57872.RData", "../data/annotationGene_28_29.txt")
+heatmap <- createComplexHeatmap(snv_matrix, cnv_matrix, integrated_matrix, "GSE57872.RData", genePath)
+```
 
-library(InteractiveComplexHeatmap)
+Use Shiny web app to interactively examine the complex heatmap.
+```{r shiny, eval=FALSE}
 # use shiny to examine heatmap
 ht_shiny(heatmap)
+```
+
+The following is a static heatmap, but the interactive heatmap can be opened in the Shiny web app.
+```{r, out.width = "1000px", fig.align = "center", echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/lizamathews/CAISC/master/figures/SampleHeatmapMGH28_29.png")
 ```
 
 ## 3.6 Tanglegram
 
 Create tanglegram
-```{r}
-library(tidyverse)  # data manipulation
-library(cluster)    # clustering algorithms
-library(factoextra) # clustering visualization
-library(dendextend) # for comparing two dendrograms
-
+```{r tanglegram}
+# find cells in both snv and cnv matrices
 snv_matrix<-(snv_matrix-mean(snv_matrix))/sd(snv_matrix)
 overlapCells<-intersect(row.names(snv_matrix), rownames(cnv_matrix))
-#png("TangleFigures.png", width=12000, height = 6000, res=200)
 
+# find clusters in snv matrix
 clust1=hclust(as.dist(snv_matrix[overlapCells,overlapCells]),method='ward.D')
 dend1=as.dendrogram(clust1)
 
+# find clusters in cnv matrix
 clust2=hclust(as.dist(cnv_matrix[overlapCells,overlapCells]),method='ward.D')
 dend2=as.dendrogram(clust2)
 
+# create tanglegram and find cophenetic correlation
 tanglegram(dend1, dend2, margin_inner = 10)
-#dev.off()
-
 cor.dendlist(dendlist(dend1=dend1, dend2=dend2))
 ```
-
-
-#### The package works for R >=4.1
 
 # 5. Session info
 
