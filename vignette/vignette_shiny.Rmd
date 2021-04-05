@@ -3,12 +3,12 @@ title: "CAISC Vignette"
 author: "Jeerthi Kannan, Liza Mathews, Shouguo Gao"
 date: "04/01/2021"
 abstract: Although both copy number variations (CNVs) and single nucleotide variations (SNVs) detected by scRNA-seq are used to study intratumor heterogeneity and detect clonal groups, a software to integrate two types of data in the same cells is unavailable. We have developed CAISC, an R package for scRNA-seq data analysis that clusters single cells into distinct subclones through integrating CNV and SNV genotype matrices with an entropy weighted approach. The CAISC package presents a powerful application for integration of CNV and SNV data from scRNA-seq to identify clonal clusters, with elevated accuracy compared to using one type of data. It also allows users to interactively examine clonal assignments.
-
 output: 
    rmarkdown::html_document:
      theme: united
      highlight: tango
      toc: true
+runtime: shiny
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
@@ -64,7 +64,8 @@ createSNVMatrix("GSE57872_merged.vcf", "DENDRO_input_10mutations.rda", "SRR_ID.t
 
 ## 3.3 Generate CNV Mutation Distance Matrix
 
-Then, create a matrix of CNV mutations from a raw counts matrix containing assigned read counts, a sample annotation file, and a gene ordering file. Run only on HPC cluster or computer with at least 8 cpus per task, 10gb of RAM, and 10g of local scratch space
+Then, create a matrix of CNV mutations from a raw counts matrix containing assigned read counts, a sample annotation file, and a gene ordering file.
+### Run only on HPC cluster or computer with at least 8 cpus per task, 10gb of RAM, and 10g of local scratch space
 ```{r CNV matrix, eval=FALSE}
 library(igraph)
 library(leiden)
@@ -89,7 +90,7 @@ write.csv(integrated_matrix, file="integratedMatrix.csv", quote = FALSE)
 ## 3.5 Create and Examine Interactive Complex Heatmap
 
 Create an interactive complex heatmap from the snv, cnv, integrated matrices, infercnv object, and the same gene ordering file used to create the cnv matrix. Use Shiny web app to interactively examine the complex heatmap.
-```{r interactive complex heatmap, eval=FALSE}
+```{r interactive complex heatmap}
 # create interactive complex heatmap
 heatmap <- createComplexHeatmap(snv_matrix, cnv_matrix, integrated_matrix, "GSE57872.RData", "../data/annotationGene_28_29.txt")
 
