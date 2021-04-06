@@ -49,7 +49,9 @@ vcf_to_SNVinput <- function(filevcf){
   X=X[sel,]
   N=N[sel,]
   Z=Z[sel,]
+  save(Info,X,N,Z,file=paste0('DENDRO_input_mutations.rda'))
   list(Info=Info, X=X, N=N, Z=Z)
+
 }
 
 #' Create Distance Matrix of SNVs
