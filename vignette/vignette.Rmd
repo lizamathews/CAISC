@@ -42,7 +42,7 @@ library(dendextend) # for comparing two dendrograms
 ```
 
 # 2. Questions & issues
-If you have any questions or problems, please feel free to open a new issue [here](). You can also email the maintainers of the package -- the contact information is below.
+If you have any questions or problems, please feel free to open a new issue [here](https://github.com/lizamathews/CAISC/issues/new). You can also email the maintainers of the package -- the contact information is below.
 
 * [Shouguo Gao]() (shouguo dot gao at nih dot gov)
   <br>
