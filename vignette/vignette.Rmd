@@ -48,7 +48,7 @@ If you have any questions or problems, please feel free to open a new issue [her
   <br>
   NHLBI Hematopoiesis and Bone Marrow Failure Lab, Bethesda, MD
 
-* [Jeerthi Kannan]() (jeerthi 98 at gmail dot com)
+* [Jeerthi Kannan]() (jeerthi dot kannan at gmail dot com)
   <br>
   NHLBI Hematopoiesis and Bone Marrow Failure Lab, Bethesda, MD
   
