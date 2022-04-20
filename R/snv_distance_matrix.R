@@ -6,8 +6,8 @@ library(magrittr)
 #'  total read counts (N), and mutation profile matrix (Z) from VCF file of mutations
 #'
 #' @param filevcf Path to input VCF file
-#' @return List with Mutation Information (Info, X, N, Z)
-vcf_to_SNVinput <- function(filevcf){
+#' @param mutations Path to input mutations RDA file
+vcf_to_SNVinput <- function(filevcf, mutations){
 
   # Read in your vcf file
   dlist=data.table::fread(filevcf,header=TRUE,skip='#CHROM')
@@ -49,8 +49,7 @@ vcf_to_SNVinput <- function(filevcf){
   X=X[sel,]
   N=N[sel,]
   Z=Z[sel,]
-  save(Info,X,N,Z,file=paste0('DENDRO_input_mutations.rda'))
-  list(Info=Info, X=X, N=N, Z=Z)
+  save(Info,X,N,Z,file=mutations)
 
 }
 
@@ -67,7 +66,8 @@ vcf_to_SNVinput <- function(filevcf){
 #' @export
 createSNVMatrix <- function(filevcf, mutations, SRR_ID, output_csv){
   # Load and parse Mutation Data
-  mutations<-vcf_to_SNVinput(filevcf)
+  vcf_to_SNVinput(filevcf, mutations)
+  load(mutations)
   X<-as.matrix(mutations$X);N<-as.matrix(mutations$N);Z<-as.matrix(mutations$Z);
   X[is.na(X)]<-0;N[is.na(N)]<-0;Z[is.na(Z)]<-0;
   cells<-gsub("sampleS", "",unlist(strsplit(colnames(X), "\\."))[1:194*2-1])
